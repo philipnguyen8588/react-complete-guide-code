@@ -9,6 +9,7 @@ function App() {
 
   const { isLoading, error, sendRequest: fetchTasks } = useHttp();
 
+
   useEffect(() => {
     const transformTasks = (tasksObj) => {
       const loadedTasks = [];
@@ -21,7 +22,7 @@ function App() {
     };
 
     fetchTasks(
-      { url: 'https://react-http-6b4a6.firebaseio.com/tasks.json' },
+      { url: 'https://reactlearning-9e212-default-rtdb.firebaseio.com/tasks.json' },
       transformTasks
     );
   }, [fetchTasks]);

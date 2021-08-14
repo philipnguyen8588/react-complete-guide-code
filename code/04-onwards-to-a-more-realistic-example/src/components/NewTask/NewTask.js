@@ -1,9 +1,10 @@
-import { useState } from 'react';
+import {useRef, useState} from 'react';
 
 import Section from '../UI/Section';
 import TaskForm from './TaskForm';
 
 const NewTask = (props) => {
+  const formRef = useRef();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -12,7 +13,7 @@ const NewTask = (props) => {
     setError(null);
     try {
       const response = await fetch(
-        'https://react-http-6b4a6.firebaseio.com/tasks.json',
+        'https://reactlearning-9e212-default-rtdb.firebaseio.com/tasks.json',
         {
           method: 'POST',
           body: JSON.stringify({ text: taskText }),
@@ -32,6 +33,8 @@ const NewTask = (props) => {
       const createdTask = { id: generatedId, text: taskText };
 
       props.onAddTask(createdTask);
+
+      formRef.current.clear();
     } catch (err) {
       setError(err.message || 'Something went wrong!');
     }
@@ -40,7 +43,7 @@ const NewTask = (props) => {
 
   return (
     <Section>
-      <TaskForm onEnterTask={enterTaskHandler} loading={isLoading} />
+      <TaskForm ref={formRef} onEnterTask={enterTaskHandler} loading={isLoading} />
       {error && <p>{error}</p>}
     </Section>
   );

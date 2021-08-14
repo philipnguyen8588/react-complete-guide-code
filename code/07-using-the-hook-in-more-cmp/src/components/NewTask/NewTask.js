@@ -8,14 +8,18 @@ const NewTask = (props) => {
   const createTask = (taskText, taskData) => {
     const generatedId = taskData.name; // firebase-specific => "name" contains generated id
     const createdTask = { id: generatedId, text: taskText };
-
+    console.log('Lip');
+    console.log(taskText);
+    console.log(taskData);
+    console.log('Lip');
     props.onAddTask(createdTask);
   };
 
   const enterTaskHandler = async (taskText) => {
+    console.log('enterTaskHandler');
     sendTaskRequest(
       {
-        url: 'https://react-http-6b4a6.firebaseio.com/tasks.json',
+        url: 'https://reactlearning-9e212-default-rtdb.firebaseio.com/tasks.json',
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
