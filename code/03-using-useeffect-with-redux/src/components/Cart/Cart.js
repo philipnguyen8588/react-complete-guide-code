@@ -3,10 +3,14 @@ import { useSelector } from 'react-redux';
 import Card from '../UI/Card';
 import classes from './Cart.module.css';
 import CartItem from './CartItem';
+import {useEffect} from "react";
 
 const Cart = (props) => {
   const cartItems = useSelector((state) => state.cart.items);
-
+  console.log('Cart start');
+  useEffect(() => {
+    console.log('Cart effect!');
+  }, [])
   return (
     <Card className={classes.cart}>
       <h2>Your Shopping Cart</h2>
