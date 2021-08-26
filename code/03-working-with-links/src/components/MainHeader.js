@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import classes from './MainHeader.module.css';
 
 const MainHeader = () => {
+  console.log('MainHeader start');
   return (
     <header className={classes.header}>
       <nav>

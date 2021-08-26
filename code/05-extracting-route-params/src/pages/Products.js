@@ -1,3 +1,5 @@
+import {Link} from "react-router-dom";
+
 const Products = () => {
   return (
     <section>
@@ -6,6 +8,9 @@ const Products = () => {
         <li>A Book</li>
         <li>A Carpet</li>
         <li>An Online Course</li>
+        <Link to='/products/32323'>
+          Welcome
+        </Link>
       </ul>
     </section>
   );
